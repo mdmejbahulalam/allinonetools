@@ -2,10 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ToolController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ToolController as AdminToolController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
+use App\Http\Controllers\Admin\BlogController as AdminBlogController;
 
 // Admin Auth Routes
 Route::prefix('admin')->group(function () {
@@ -19,9 +21,12 @@ Route::prefix('admin')->middleware('auth:admin')->group(function () {
     Route::get('dashboard', DashboardController::class)->name('admin.dashboard');
     Route::resource('tools', AdminToolController::class, ['as' => 'admin']);
     Route::resource('categories', AdminCategoryController::class, ['as' => 'admin']);
+    Route::resource('blogs', AdminBlogController::class, ['as' => 'admin']);
 });
 
 // Public Routes
 Route::get('/', [ToolController::class, 'index'])->name('home');
-Route::get('/category/{slug}', [ToolController::class, 'category'])->name('category');
+Route::get('/category/{slug}', [ToolController::class, 'category'])->name('category.show');
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+Route::get('/blog/{blog}', [BlogController::class, 'show'])->name('blog.show');
 Route::get('/{slug}', [ToolController::class, 'show'])->name('tool.show');
