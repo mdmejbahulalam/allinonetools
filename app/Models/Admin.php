@@ -12,4 +12,9 @@ class Admin extends Model implements Authenticatable
 
     protected $fillable = ['name', 'email', 'password', 'role', 'is_active'];
     protected $hidden = ['password', 'remember_token'];
+
+    public function blogs()
+    {
+        return $this->hasMany(Blog::class, 'author_id');
+    }
 }

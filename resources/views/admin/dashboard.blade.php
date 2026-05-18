@@ -19,7 +19,7 @@
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <!-- Stats Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 mb-12">
             <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
                 <div class="flex items-center">
                     <div class="flex-1">
@@ -59,10 +59,30 @@
                     <div class="text-3xl text-orange-500 dark:text-orange-400">👁️</div>
                 </div>
             </div>
+
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+                <div class="flex items-center">
+                    <div class="flex-1">
+                        <p class="text-gray-600 dark:text-gray-400 text-sm font-medium">Total Blogs</p>
+                        <p class="text-3xl font-bold text-gray-900 dark:text-white">{{ $stats['total_blogs'] }}</p>
+                    </div>
+                    <div class="text-3xl text-red-500 dark:text-red-400">📝</div>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+                <div class="flex items-center">
+                    <div class="flex-1">
+                        <p class="text-gray-600 dark:text-gray-400 text-sm font-medium">Published Blogs</p>
+                        <p class="text-3xl font-bold text-gray-900 dark:text-white">{{ $stats['published_blogs'] }}</p>
+                    </div>
+                    <div class="text-3xl text-red-500 dark:text-red-400">🔴</div>
+                </div>
+            </div>
         </div>
 
         <!-- Management Sections -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
             <!-- Tools Management -->
             <div class="bg-white dark:bg-gray-800 rounded-lg shadow">
                 <div class="border-b border-gray-200 dark:border-gray-700 px-6 py-4 flex justify-between items-center">
@@ -91,6 +111,22 @@
                     <p class="text-gray-600 dark:text-gray-400 mb-4">Manage tool categories and organize content</p>
                     <a href="{{ route('admin.categories.index') }}" class="text-green-600 dark:text-green-400 hover:underline font-medium">
                         View all categories →
+                    </a>
+                </div>
+            </div>
+
+            <!-- Blog Management -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow">
+                <div class="border-b border-gray-200 dark:border-gray-700 px-6 py-4 flex justify-between items-center">
+                    <h2 class="text-xl font-bold text-gray-900 dark:text-white">Blog Management</h2>
+                    <a href="{{ route('admin.blogs.create') }}" class="bg-red-600 dark:bg-red-700 hover:bg-red-700 dark:hover:bg-red-800 text-white px-4 py-2 rounded text-sm transition">
+                        Add Post
+                    </a>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">Write and manage blog posts</p>
+                    <a href="{{ route('admin.blogs.index') }}" class="text-red-600 dark:text-red-400 hover:underline font-medium">
+                        View all posts →
                     </a>
                 </div>
             </div>
